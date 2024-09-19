@@ -1,5 +1,5 @@
 function HomepageGet(req, res) {
-  res.render("Homepage");
+  res.render("Homepage", {});
 }
 
 module.exports = { HomepageGet };

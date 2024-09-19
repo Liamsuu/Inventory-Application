@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new item</title>
+  </head>
+  <body>
+    <form action="/item/add-item" method="post">
+      <label for="prodname">Name: </label>
+      <input type="text" name="prodname" id="prodname" />
+      <label for="category">Choose a category: </label>
+      <select id="category" name="category">
+        <option value="mobile">Mobiles</option>
+        <option value="tablet">Tablets</option>
+        <option value="laptop">Laptops</option>
+        <option value="tv">Televisions</option>
+      </select>
+      <label for="quantity">Quantity: </label>
+      <input type="number" name="quantity" id="quantity" />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
