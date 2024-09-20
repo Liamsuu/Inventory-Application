@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0 0 0;
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.productListings {
+  border: 1px solid black;
+  background-color: #a5b4fc;
+  padding: 1rem;
+  width: 40%;
+  margin-bottom: 0.5rem;
+}

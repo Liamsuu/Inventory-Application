@@ -2,12 +2,13 @@ const pool = require("./pool");
 
 async function getItemsWithCategory(category) {
   const listings = await pool.query(
-    `SELECT * FROM products
-         WHERE category = $1;
+    `SELECT products.id, products.prodname, products.category, products.brand, sales.quantity FROM products
+      INNER JOIN sales
+      ON products.id = sales.product_id
+      WHERE category = $1;
         `,
     [category]
   );
-  listings.forEach((product) => {});
   return listings.rows;
 }
 
@@ -31,4 +32,21 @@ async function addItem(prodName, category, brand, quantity) {
   );
 }
 
-module.exports = { getItemsWithCategory, addItem };
+async function removeProduct(id) {
+  await pool.query(
+    `
+    DELETE FROM products
+    WHERE id = $1;
+    `,
+    [id]
+  );
+
+  await pool.query(
+    `
+    DELETE FROM sales
+    WHERE product_id = $1;
+    `,
+    [id]
+  );
+}
+module.exports = { getItemsWithCategory, addItem, removeProduct };
