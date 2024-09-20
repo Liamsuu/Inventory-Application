@@ -25,11 +25,29 @@
     <% if(locals.listings != undefined){ %> <% for (let i = 0; i <
     locals.listings.length; i++) { %>
     <div class="productListings">
-      <ul style="margin: 0; list-style: none; display: flex; gap: 5rem">
+      <ul
+        style="
+          margin: 0;
+          list-style: none;
+          display: flex;
+          gap: 5rem;
+          color: #1e1b4b;
+        "
+      >
         <li>Product ID: <%= locals.listings[i].id %></li>
         <li>Product Name: <%= locals.listings[i].prodname %></li>
         <li>Category: <%= locals.listings[i].category %></li>
+        <li>Brand: <%= locals.listings[i].brand%></li>
         <li>Quantity: <%= locals.listings[i].quantity %></li>
+        <form action="/delete-product" method="post">
+          <input
+            type="number"
+            value="<%= locals.listings[i].id %>"
+            name="prodId"
+            hidden
+          />
+          <button type="submit">Delete</button>
+        </form>
       </ul>
     </div>
     <% } %> <% } %>
