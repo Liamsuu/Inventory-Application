@@ -6,7 +6,13 @@ function addItemGet(req, res) {
 }
 
 async function addItemPost(req, res) {
-  db.addItem(); // fill these parameters out
+  db.addItem(
+    req.body.prodname,
+    req.body.category,
+    req.body.brand,
+    req.body.quantity
+  );
+  res.redirect("/");
 }
 
 module.exports = { addItemGet, addItemPost };

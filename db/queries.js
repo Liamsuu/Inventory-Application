@@ -7,16 +7,27 @@ async function getItemsWithCategory(category) {
         `,
     [category]
   );
+  listings.forEach((product) => {});
   return listings.rows;
 }
 
-async function addItem(prodName, category, quantity) {
+async function addItem(prodName, category, brand, quantity) {
   await pool.query(
     `
-        INSERT INTO products (prodname, category, quantity)
-        VALUES($1, $2, $3);
+        INSERT INTO products (prodname, category, brand)
+        VALUES($1, $2, $3)
+        RETURNING *;
         `,
-    [prodName, category, quantity]
+    [prodName, category, brand],
+    async (err, result) => {
+      await pool.query(
+        `
+        INSERT INTO sales (product_id, quantity)
+        VALUES($1, $2);
+        `,
+        [result.rows[0].id, quantity]
+      );
+    }
   );
 }
 
