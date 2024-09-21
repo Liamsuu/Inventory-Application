@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
   <body>
-    <a href="/item/add-item">Add new product</a>
-    <form
-      action="/category-choice"
-      method="post"
-      style="display: flex; gap: 0.5rem; margin-bottom: 2rem; margin-top: 1rem"
+    <%- include('./partials/NavBar') %>
+    <a href="/item/add-item" style="background-color: #f8f9fa; color: #1a73e8"
+      >Add new product</a
     >
+    <form action="/category-choice" method="post" id="categoryChoiceForm">
       <label for="category">Choose a category:</label>
       <select id="category" name="category">
         <option value="mobile">Mobiles</option>
@@ -25,15 +24,7 @@
     <% if(locals.listings != undefined){ %> <% for (let i = 0; i <
     locals.listings.length; i++) { %>
     <div class="productListings">
-      <ul
-        style="
-          margin: 0;
-          list-style: none;
-          display: flex;
-          gap: 5rem;
-          color: #1e1b4b;
-        "
-      >
+      <ul style="margin: 0; list-style: none; display: flex; gap: 5rem">
         <li>Product ID: <%= locals.listings[i].id %></li>
         <li>Product Name: <%= locals.listings[i].prodname %></li>
         <li>Category: <%= locals.listings[i].category %></li>
@@ -46,7 +37,7 @@
             name="prodId"
             hidden
           />
-          <button type="submit">Update</button>
+          <button type="submit" class="homeUpdateBtn">Update</button>
         </form>
         <form action="/delete-product" method="post">
           <input
@@ -55,7 +46,7 @@
             name="prodId"
             hidden
           />
-          <button type="submit">Delete</button>
+          <button type="submit" class="homeRemoveBtn">Delete</button>
         </form>
       </ul>
     </div>

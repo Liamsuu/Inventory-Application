@@ -2,15 +2,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0 0 0;
+  padding: 0;
   margin: 0;
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #ffffff;
+  color: #202124;
 }
 
 #add-form-wrapper {
-  padding: 1rem;
-  background-color: #c7d2fe;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  color: #5f6368;
   display: flex;
   flex-direction: column;
+}
+
+#add-form-wrapper div {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  width: 100%;
+  box-shadow: 0 4px 2px -2px #d9dce0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+nav ul {
+  list-style: none;
+}
+
+nav li a {
+  color: #202124;
+  text-decoration: none;
+  font-size: 1.5rem;
 }

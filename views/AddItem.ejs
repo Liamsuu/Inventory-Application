@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="/stylesheets/addform.css" />
   </head>
   <body>
+    <%- include('./partials/NavBar') %>
     <form action="/item/add-item" method="post" id="add-form-wrapper">
-      <label for="prodname">Name: </label>
-      <input type="text" name="prodname" id="prodname" required />
-      <label for="category">Choose a category: </label>
-      <select id="category" name="category" required>
-        <option value="mobile">Mobiles</option>
-        <option value="tablet">Tablets</option>
-        <option value="laptop">Laptops</option>
-        <option value="tv">Televisions</option>
-      </select>
-      <label for="brand">Brand: </label>
-      <input type="text" name="brand" id="brand" required />
-      <label for="quantity">Quantity Sold: </label>
-      <input type="number" name="quantity" id="quantity" required />
+      <div>
+        <label for="prodname">Name: </label>
+        <input type="text" name="prodname" id="prodname" required />
+      </div>
+      <div>
+        <label for="category">Choose a category: </label>
+        <select id="category" name="category" required>
+          <option value="mobile">Mobiles</option>
+          <option value="tablet">Tablets</option>
+          <option value="laptop">Laptops</option>
+          <option value="tv">Televisions</option>
+        </select>
+      </div>
+      <div>
+        <label for="brand">Brand: </label>
+        <input type="text" name="brand" id="brand" required />
+      </div>
+      <div>
+        <label for="quantity">Quantity Sold: </label>
+        <input type="number" name="quantity" id="quantity" required />
+      </div>
       <input type="submit" />
     </form>
   </body>
