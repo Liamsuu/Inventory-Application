@@ -1,8 +1,13 @@
 const db = require("../db/queries");
 
-// homepage. this is the first thing rendered at the index route, it does not contain any product listings
-function HomepageGet(req, res) {
-  res.render("Homepage", {});
+// homepage. this is the first thing rendered at the index route, it renders mobiles
+async function HomepageGet(req, res) {
+  const listings = await db.getItemsWithCategory("mobile");
+  res.render("Homepage", {
+    listings: listings,
+    removeProduct: db.removeProduct,
+  });
+  res.end();
 }
 
 // removes product from database based on id

@@ -24,12 +24,12 @@
     <% if(locals.listings != undefined){ %> <% for (let i = 0; i <
     locals.listings.length; i++) { %>
     <div class="productListings">
-      <ul style="margin: 0; list-style: none; display: flex; gap: 5rem">
+      <ul style="margin: 0; list-style: none; display: flex; gap: 1rem">
         <li>Product ID: <%= locals.listings[i].id %></li>
         <li>Product Name: <%= locals.listings[i].prodname %></li>
         <li>Category: <%= locals.listings[i].category %></li>
         <li>Brand: <%= locals.listings[i].brand%></li>
-        <li>Quantity: <%= locals.listings[i].quantity %></li>
+        <li>Quantity Sold: <%= locals.listings[i].quantity %></li>
         <form action="/update-product" method="get">
           <input
             type="number"

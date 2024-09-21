@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS sales (
   product_id INTEGER NOT NULL,
   quantity INTEGER NOT NULL
 );
+
 `;
 
 // set either railway or local development database

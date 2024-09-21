@@ -18,6 +18,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.productListings ul li {
+  flex: 1;
+}
+
 .homeUpdateBtn,
 .homeRemoveBtn {
   background-color: #5f6368;
