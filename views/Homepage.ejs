@@ -39,6 +39,15 @@
         <li>Category: <%= locals.listings[i].category %></li>
         <li>Brand: <%= locals.listings[i].brand%></li>
         <li>Quantity: <%= locals.listings[i].quantity %></li>
+        <form action="/update-product" method="get">
+          <input
+            type="number"
+            value="<%= locals.listings[i].id %>"
+            name="prodId"
+            hidden
+          />
+          <button type="submit">Update</button>
+        </form>
         <form action="/delete-product" method="post">
           <input
             type="number"

@@ -12,6 +12,19 @@ async function getItemsWithCategory(category) {
   return listings.rows;
 }
 
+async function getItemByID(id) {
+  const listing = await pool.query(
+    `
+    SELECT products.id, products.prodname, products.category, products.brand, sales.quantity FROM products
+      INNER JOIN sales
+      ON products.id = sales.product_id
+      WHERE products.id = $1;
+        `,
+    [id]
+  );
+  return listing.rows;
+}
+
 async function addItem(prodName, category, brand, quantity) {
   await pool.query(
     `
@@ -49,4 +62,31 @@ async function removeProduct(id) {
     [id]
   );
 }
-module.exports = { getItemsWithCategory, addItem, removeProduct };
+
+async function updateDb(id, prodName, category, brand, quantity) {
+  await pool.query(
+    `
+    UPDATE products
+    SET prodname = $2,
+        category = $3,
+        brand = $4
+    WHERE id = $1;
+    `,
+    [id, prodName, category, brand]
+  );
+  await pool.query(
+    `
+        UPDATE sales
+    SET quantity = $2
+    WHERE product_id = $1;
+        `,
+    [id, quantity]
+  );
+}
+module.exports = {
+  getItemsWithCategory,
+  addItem,
+  removeProduct,
+  getItemByID,
+  updateDb,
+};
